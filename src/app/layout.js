@@ -1,18 +1,22 @@
-
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
-import ClientLayout from "@/client-layout";
+import LenisProvider from "@/components/LenisProvider";
+import Header from "@/components/Header/Header";
 
 export const metadata = {
-  title: "Deadlock Studios",
-  description: "MWT BY CODEGRID | MAY 2026",
+  title: "ImagineCo",
+//   description: "MAY 2026",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ClientLayout>{children}</ClientLayout>
+        <Header/>
+        <LenisProvider>
+            {children}
+        </LenisProvider>
       </body>
     </html>
   );

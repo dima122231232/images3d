@@ -1,0 +1,64 @@
+@import url(./fonts.css);
+:root {
+    --font-primary: "PP", sans-serif;
+    --font-additional: "Aeonik", sans-serif;
+
+    --base-0: #ffffff; 
+    --base-100: #F9F9F9; 
+    --base-200: #FAFF74; 
+    --base-300: #F7FF15;
+
+    --content-100: #000000;
+    --content-200: #171717;
+    --content-300: #22002F;
+    
+    --bg-color: #ffffff;
+    --link-color: #000;
+    
+
+    --block-hover-transion: .6s cubic-bezier(0.5, 0, 0.2, 1);
+
+    --indents:40px;
+}
+
+/* html {overscroll-behavior: none;} html { scrollbar-width: none; } html::-webkit-scrollbar { display: none; } */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    
+}
+body {
+    font-family: var(--font-primary);
+    /* background-color:   #FFE150; */
+     background-color:   #fff;
+    color: var(--content-100);
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+li{list-style: none;}
+.container{
+    position: relative;
+    padding:0 var(--indents);
+    width: 100%;
+    height:100%;
+}
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-additional {
+  font-family: var(--font-additional);
+}
+p.font-additional , ul.font-additional li{
+    font-size:1rem;
+    line-height: 140%;
+    letter-spacing: 1%;
+    color: var(--base-0);
+    font-weight: 400;
+}
