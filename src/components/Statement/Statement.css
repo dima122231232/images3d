@@ -1,0 +1,61 @@
+.statement {
+
+    padding-top:7.5rem;
+}
+
+
+.statement__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.statement__content{
+    text-align: center;
+}
+
+.statement__eyebrow {
+    font-family: var(--font-additional);
+    font-weight: 400;
+    font-size: 2.25rem;
+    line-height: 140%;
+    letter-spacing: 1%;
+    color: var(--content-100);
+    
+}
+
+.statement__title {
+    font-family: var(--font-primary);
+    font-weight: 200;
+    font-size: 2.75rem;
+    line-height: 105%;
+    letter-spacing: -4%;
+    color: var(--content-100);
+    font-style: italic;
+}
+
+.statement__feature {
+    height:100svh;
+    padding: 5.25rem 0 2.75rem;
+}
+
+.statement__images {
+    height: 100%;
+    position: relative;
+}
+
+.statement__image {
+    position: absolute;
+    inset: 0;
+}
+
+.statement__info {
+    
+}
+
+.statement__name {
+    
+}
+
+.statement__link {
+    
+}
