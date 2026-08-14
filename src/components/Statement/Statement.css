@@ -35,6 +35,7 @@
 
 .statement__feature {
     height:100svh;
+    position: relative;
     padding: 5.25rem 0 2.75rem;
 }
 
@@ -42,20 +43,43 @@
     height: 100%;
     position: relative;
 }
-
-.statement__image {
+.statement__image-wrapper{
     position: absolute;
     inset: 0;
+    overflow: hidden;
+    transform-origin: 50% 100%;
+    transform: translateY(65%) scale(.5);
+}
+.statement__image {
+    transform: scale(2);
 }
 
+
 .statement__info {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap:1.625rem;
     
 }
 
 .statement__name {
-    
+    font-size:5.5rem;
+    line-height: 100%;
+    text-transform: capitalize;
+    color: var(--base-100);
+    font-family: var(--font-primary);
+    letter-spacing: 0%;
+    font-weight: 200;
 }
 
 .statement__link {
-    
+    font-size:1.5rem;
+    line-height: 100%;
+    text-transform: capitalize;
+    color: var(--base-100);
+    font-family: var(--font-additional);
+    letter-spacing: -2%;
+    font-weight: 400;
 }
