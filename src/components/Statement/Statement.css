@@ -7,7 +7,7 @@
 .statement__container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    /* gap: 2rem; */
 }
 .statement__content{
     text-align: center;
@@ -57,7 +57,8 @@
 
 .statement__info {
     position: absolute;
-    bottom: 0;
+    left:2rem;
+    bottom:calc(2.75rem + 3rem) ;
     display: flex;
     flex-direction: column;
     gap:1.625rem;
@@ -82,4 +83,5 @@
     font-family: var(--font-additional);
     letter-spacing: -2%;
     font-weight: 400;
+    cursor: pointer;
 }
