@@ -24,7 +24,7 @@ export default function Statement() {
             ScrollTrigger.create({
                 trigger: feature,
                 start: "top top",
-                end: () => `+=${window.innerHeight * 5}px`,
+                end: () => `+=${window.innerHeight * 4}px`,
                 pin: feature,
                 pinSpacing: true,
             });

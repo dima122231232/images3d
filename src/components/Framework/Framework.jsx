@@ -18,79 +18,65 @@ export default function Framework() {
 
         const photo = q(".framework__image");
         const title = q(".framework__list li");
-        const track = q(".framework__images-track");
 
-        const updateStep = (index, progress) => {
-            const start = index / photo.length;
+        const hiddenClip = "polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%)";
+        const fullClip = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
 
-            const activeIndex = Math.min(
-                Math.floor(progress * photo.length),
-                photo.length - 1
-            );
-
-            gsap.to(photo[index], {
-                scale: progress >= start ? 1 : 0,
-                duration: .75,
-                ease: "power2.out"
-            });
-
-            gsap.set(title[index], {
-                opacity: index === activeIndex ? 1 : .3
-            });
-        };
-
-        const updateTrack = (progress) => {
-            const step = 1 / photo.length;
-
-            const activeIndex = Math.min(
-                Math.floor(progress / step),
-                photo.length - 1
-            );
-
-            const stepProgress = gsap.utils.mapRange(
-                activeIndex * step,
-                (activeIndex + 1) * step,
-                0,
-                1,
-                progress
-            );
-
-            if (activeIndex === 0) {
-                gsap.set(track, {
-                    scale: 1
-                });
-            }
-
-            if (activeIndex === 1) {
-                gsap.set(track, {
-                    // scale: 1 - stepProgress * .6
-                });
-            }
-
-            if (activeIndex === 2) {
-                gsap.set(track, {
-                    // scale: .4 + stepProgress * .6
-                });
-            }
-        };
 
         const trigger = ScrollTrigger.create({
             trigger: section.current,
             start: "top top",
-            end: () => `+=${window.innerHeight * 2}px`,
+            end: () => `+=${window.innerHeight * 4}px`,
             pin: isMobile ? false : true,
             pinSpacing: true,
             scrub: 0,
 
-            onUpdate: (self) => {
-                const progress = self.progress;
+        onUpdate: (self) => {
+            const progress = self.progress;
+            const total = photo.length;
 
-                photo.forEach((item, index) => {
-                    updateStep(index, progress);
+            const position = progress * total;
+
+            const activeIndex = Math.min(
+                Math.floor(position),
+                total - 1
+            );
+
+            const localProgress = position - activeIndex;
+
+            photo.forEach((item, index) => {
+                if (index < activeIndex) {
+                    gsap.to(item, {
+                        clipPath: fullClip
+                    });
+                } else if (index > activeIndex) {
+                    gsap.to(item, {
+                        clipPath: hiddenClip
+                    });
+                }
+            });
+
+            if (activeIndex === 0) {
+                gsap.set(photo[0], {
+                    clipPath: fullClip
                 });
-
-                updateTrack(progress);
+            } else {
+                gsap.to(photo[activeIndex], {
+                    clipPath: `polygon(
+                        ${100 - localProgress * 100}% 0%,
+                        100% 0%,
+                        100% 100%,
+                        ${100 - localProgress * 100}% 100%
+                    )`
+                });
             }
+
+            title.forEach((item, index) => {
+                gsap.set(item, {
+                    opacity: index === activeIndex ? 1 : 0.3
+                });
+            });
+        }
         });
 
         const clickHandlers = [];
@@ -157,7 +143,6 @@ export default function Framework() {
 
             <div className="framework__images">
                 <div className="framework__images-track">
-
                     <img
                         className="framework__image"
                         src="/framework/img1.jpg"
@@ -205,7 +190,6 @@ export default function Framework() {
                         src="/preloader/4.jpg"
                         alt=""
                     />
-
                 </div>
             </div>
         </section>
